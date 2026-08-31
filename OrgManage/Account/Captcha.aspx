@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Captcha.aspx.cs" Inherits="OrgManage.Account.Captcha" EnableViewState="false" %>

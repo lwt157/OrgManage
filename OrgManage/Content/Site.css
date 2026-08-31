@@ -1,0 +1,246 @@
+﻿:root {
+    --primary: #ff8ba7;
+    --primary-dark: #e94560;
+    --accent: #ffd43b;
+    --bg-dark: #1a1a2e;
+    --bg-glass: rgba(255, 255, 255, 0.08);
+    --text-light: rgba(255,255,255,0.9);
+}
+
+/* 全局星空深色背景 */
+body {
+    background: url('../images/bg-night.jpg') no-repeat center center fixed !important;
+    background-size: cover !important;
+    font-family: "微软雅黑", "PingFang SC", sans-serif;
+    color: var(--text-light) !important;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
+/* 导航栏默认状态（去掉 !important，允许被母版 ID+Class 样式覆盖） */
+.navbar {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+    .navbar.scrolled {
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    color: #fff !important;
+    transition: all 0.3s ease;
+}
+
+    .navbar-brand:hover {
+        transform: scale(1.08);
+        color: #ff8ba7 !important;
+    }
+
+.nav-link {
+    color: rgba(255,255,255,0.9) !important;
+    transition: all 0.2s ease;
+}
+
+    .nav-link:hover {
+        color: var(--primary) !important;
+        transform: translateY(-1px);
+    }
+
+    .nav-link.active {
+        color: var(--accent) !important;
+        font-weight: 600;
+        border-bottom: 2px solid #ff8ba7 !important;
+        padding-bottom: 6px !important;
+    }
+
+/* 下拉菜单 */
+.dropdown-menu {
+    background: rgba(26, 26, 46, 0.95) !important;
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+}
+
+.dropdown-item {
+    color: rgba(255,255,255,0.8) !important;
+    transition: all 0.2s;
+}
+
+    .dropdown-item:hover {
+        background: rgba(255,255,255,0.1) !important;
+        color: var(--primary) !important;
+    }
+
+.dropdown-divider {
+    border-color: rgba(255,255,255,0.1);
+}
+
+/* 注册按钮 */
+.btn-warning {
+    background: linear-gradient(90deg, #e94560, #ff8ba7) !important;
+    border: none !important;
+    color: #fff !important;
+    transition: all 0.3s ease;
+}
+
+    .btn-warning:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(233,69,96,0.3);
+    }
+
+/* 横幅 */
+.site-hero {
+    background: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(8px);
+    color: #fff;
+    padding: 60px 0 50px;
+}
+
+    .site-hero h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-shadow: 0 2px 8px rgba(0,0,0,.3);
+    }
+
+    .site-hero p {
+        font-size: 1.1rem;
+        opacity: .88;
+    }
+
+/* 卡片 */
+.org-card {
+    background: var(--bg-glass) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15) !important;
+    color: #fff !important;
+    border-radius: 12px;
+    transition: transform .3s, box-shadow .3s;
+}
+
+    .org-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0,0,0,.3);
+    }
+
+    .org-card .card-img-top {
+        height: 140px;
+        object-fit: cover;
+        border-radius: 12px 12px 0 0;
+        background: #e9ecef;
+    }
+
+.badge-category {
+    background: var(--primary);
+    font-size: .75rem;
+}
+
+/* 活动卡片 */
+.act-card {
+    background: var(--bg-glass) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15) !important;
+    color: #fff !important;
+    border-radius: 12px;
+    transition: transform .3s, box-shadow .3s;
+}
+
+    .act-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,.25);
+    }
+
+    .act-card .act-date {
+        background: var(--primary);
+        color: #fff;
+        text-align: center;
+        padding: 6px 12px;
+        border-radius: 8px;
+        display: inline-block;
+    }
+
+        .act-card .act-date .day {
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .act-card .act-date .mon {
+            font-size: .75rem;
+        }
+
+/* 侧边栏 */
+.sidebar-card {
+    background: var(--bg-glass) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15) !important;
+    color: #fff !important;
+    border-radius: 12px;
+    box-shadow: none;
+}
+
+/* 状态标签 */
+.badge-status-0 {
+    background: #ffc107;
+    color: #333;
+}
+
+.badge-status-1 {
+    background: #28a745;
+}
+
+.badge-status-2 {
+    background: #17a2b8;
+}
+
+.badge-status-3 {
+    background: #6c757d;
+}
+
+.badge-status-4 {
+    background: #dc3545;
+}
+
+.badge-status-5 {
+    background: #dc3545;
+}
+
+/* 页脚 */
+footer {
+    background: rgba(0,0,0,0.4) !important;
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #ccc;
+    padding: 30px 0 15px;
+    margin-top: 60px;
+}
+
+    footer a {
+        color: #adb5bd;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+        footer a:hover {
+            color: var(--primary);
+        }
+
+/* 响应式 */
+@media (max-width: 576px) {
+    .site-hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .site-hero {
+        padding: 35px 0 30px;
+    }
+}
+

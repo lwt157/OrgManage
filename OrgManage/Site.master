@@ -1,0 +1,249 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="OrgManage.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head runat="server">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>高校组织综合线上管理平台</title>
+
+    <link rel="icon" type="image/x-icon" href="<%= ResolveUrl("~/images/favicon.png") %>" />
+
+    <!-- 预连接 BootCDN -->
+    <link rel="preconnect" href="https://cdn.bootcdn.net" />
+    <link rel="preconnect" href="https://cdn.bootcdn.net" crossorigin />
+
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" />
+
+    <!-- 全局样式（可缓存） -->
+    <link rel="stylesheet" href="<%= ResolveUrl("~/Content/Site.css") %>?v=1.0" />
+
+    <!-- 预加载背景大图 -->
+    <link rel="preload" as="image" href="<%= ResolveUrl("~/images/bg-night.jpg") %>" />
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+
+    <style>
+        /* ========== 强制透明样式（最高优先级，解决初始不生效问题） ========== */
+        /* 视频页面：导航栏完全透明，覆盖所有默认背景 */
+        .navbar.navbar-transparent {
+            background: transparent !important;
+            background-color: transparent !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border-bottom: none !important;
+            transition: all 0.4s ease;
+        }
+
+        /* 透明状态下，强制文字为白色，和视频背景适配 */
+        .navbar.navbar-transparent .nav-link,
+        .navbar.navbar-transparent .navbar-brand,
+        .navbar.navbar-transparent .dropdown-toggle {
+            color: #fff !important;
+        }
+
+        /* 透明状态下，强制Toggler图标为白色 */
+        .navbar.navbar-transparent .navbar-toggler-icon {
+            filter: invert(1);
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server" enctype="multipart/form-data">
+
+        <!-- ===== 导航栏 ===== -->
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+            <div class="container">
+             <a class="navbar-brand" href="~/Default.aspx" runat="server">
+    <asp:Image ID="imgSystemLogo" runat="server" 
+        style="height:32px; width:32px; object-fit: cover; border-radius: 50%; margin-right:10px;" />
+    <asp:Literal ID="litSystemName" runat="server"></asp:Literal>
+</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navMain">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <asp:HyperLink runat="server" ID="navHome" CssClass="nav-link" NavigateUrl="~/Default.aspx">
+                                <i class="bi bi-house me-1"></i>首页
+                            </asp:HyperLink>
+                        </li>
+                        <li class="nav-item">
+                            <asp:HyperLink runat="server" ID="navOrgs" CssClass="nav-link" NavigateUrl="~/Orgs/List.aspx">
+                                <i class="bi bi-grid me-1"></i>组织大厅
+                            </asp:HyperLink>
+                        </li>
+                        <li class="nav-item">
+                            <asp:HyperLink runat="server" ID="navActivities" CssClass="nav-link" NavigateUrl="~/Activities/List.aspx">
+                                <i class="bi bi-calendar-event me-1"></i>活动中心
+                            </asp:HyperLink>
+                        </li>
+                        <li class="nav-item">
+                            <asp:HyperLink runat="server" ID="navRecruit" CssClass="nav-link" NavigateUrl="~/Orgs/Recruit.aspx">
+                                <i class="bi bi-megaphone me-1"></i>招新广场
+                            </asp:HyperLink>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto">
+                        <asp:PlaceHolder ID="phLogin" runat="server" Visible="false">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                    <i class="bi bi-person-circle me-1"></i>
+                                    <asp:Literal ID="litUserName" runat="server" />
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="~/Account/MyCenter.aspx" runat="server"><i class="bi bi-person me-2"></i>个人中心</a></li>
+                                    
+                                    <asp:PlaceHolder ID="phOrgManage" runat="server">
+                                        <li><asp:HyperLink ID="lnkMyOrg" runat="server" CssClass="dropdown-item"><i class="bi bi-gear me-2"></i>我的组织管理</asp:HyperLink></li>
+                                    </asp:PlaceHolder>
+
+                                    <asp:PlaceHolder ID="phAdmin" runat="server">
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item text-danger" href="~/Admin/Dashboard.aspx" runat="server"><i class="bi bi-shield-lock me-2"></i>后台管理</a></li>
+                                    </asp:PlaceHolder>
+                                    
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="~/Account/Logout.aspx" runat="server"><i class="bi bi-box-arrow-right me-2"></i>退出登录</a></li>
+                                </ul>
+                            </li>
+                        </asp:PlaceHolder>
+
+                        <asp:PlaceHolder ID="phNotLogin" runat="server">
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/Account/Login.aspx" runat="server"><i class="bi bi-box-arrow-in-right me-1"></i>登录</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-warning btn-sm text-dark ms-2 px-3 fw-bold" href="~/Account/Register.aspx" runat="server">注册</a>
+                            </li>
+                        </asp:PlaceHolder>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 主内容区 -->
+        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+
+        <!-- 页脚 -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <h6 class="text-white fw-bold">高校组织综合线上管理平台</h6>
+                        <p class="small">整合学校所有学生组织，让校园生活更精彩。</p>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <h6 class="text-white fw-bold">快速链接</h6>
+                        <ul class="list-unstyled small">
+                            <li><a href="~/Orgs/List.aspx" runat="server">组织大厅</a></li>
+                            <li><a href="~/Activities/List.aspx" runat="server">活动中心</a></li>
+                            <li><a href="~/Orgs/Recruit.aspx" runat="server">招新广场</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <h6 class="text-white fw-bold">联系我们</h6>
+                        <p class="small"><i class="bi bi-envelope me-1"></i>2252528819@qq.com</p>
+                        <p class="small"><i class="bi bi-telephone me-1"></i>010-12345678</p>
+                    </div>
+                </div>
+                <hr class="border-secondary" />
+                <p class="text-center small mb-0">© 2026 高校组织综合线上管理平台 · Web程序设计课程设计</p>
+            </div>
+        </footer>
+
+        <!-- Bootstrap JS（defer） -->
+<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+        <asp:ContentPlaceHolder ID="ScriptContent" runat="server" />
+
+     <!-- 下拉菜单初始化 & 视频导航透明初始化 -->
+<script>
+    // 确保 Bootstrap 加载完成再初始化
+    window.addEventListener('load', function () {
+        initBootstrapComponents();
+    });
+
+    function initBootstrapComponents() {
+        try {
+            var dropdowns = document.querySelectorAll('.dropdown-toggle');
+            dropdowns.forEach(function (el) {
+                new bootstrap.Dropdown(el);
+            });
+        } catch (e) { }
+    }
+
+    // 回发后重新初始化
+    if (typeof (Sys) !== 'undefined') {
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
+        prm.add_endRequest(function () {
+            initBootstrapComponents();
+        });
+    }
+
+    // 导航逻辑
+    const navbar = document.querySelector('.navbar');
+    const videoSection = document.getElementById('videoSection');
+    if (videoSection) {
+        navbar.classList.add('navbar-transparent');
+        navbar.classList.remove('scrolled');
+        handleVideoNav(navbar, videoSection);
+    } else {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    }
+
+    function handleVideoNav(navbar, videoSection) {
+        if (!videoSection) return;
+        const threshold = videoSection.offsetHeight / 2;
+        if (window.scrollY > threshold) {
+            navbar.classList.remove('navbar-transparent');
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.add('navbar-transparent');
+            navbar.classList.remove('scrolled');
+        }
+    }
+</script>
+
+        <!-- 全局滚动控制 -->
+        <script>
+            window.addEventListener('scroll', function () {
+                const navbar = document.querySelector('.navbar');
+                const videoSection = document.getElementById('videoSection');
+                if (videoSection) {
+                    const threshold = videoSection.offsetHeight / 2;
+                    if (window.scrollY > threshold) {
+                        if (!navbar.classList.contains('scrolled')) {
+                            navbar.classList.remove('navbar-transparent');
+                            navbar.classList.add('scrolled');
+                        }
+                    } else {
+                        if (!navbar.classList.contains('navbar-transparent')) {
+                            navbar.classList.add('navbar-transparent');
+                            navbar.classList.remove('scrolled');
+                        }
+                    }
+                } else {
+                    // 普通页面：滚动超过50px加深背景
+                    if (window.scrollY > 50) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                }
+            });
+        </script>
+    </form>
+</body>
+</html>

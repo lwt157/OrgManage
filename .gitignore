@@ -1,0 +1,84 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+**/Properties/launchSettings.json
+
+# NuGet
+*.nupkg
+packages/
+build/
+
+# App_Data 数据库文件和日志（保留空目录）
+**/App_Data/*.mdf
+**/App_Data/*.ldf
+**/App_Data/*.mdf_log.ldf
+**/App_Data/aspnetdb.mdf
+**/App_Data/*.log
+**/App_Data/PublishProfiles/
+**/App_Data/.gitkeep
+
+# ASP.NET
+*.pubxml
+*.publishproj
+
+# Visual Studio cache/options directory
+.vs/
+*.vspscc
+*.vssscc
+
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Others
+*.bak
+*.cache
+*.dbmdl
+*.dbproj.schemaview
+*.pfx
+*.publishsettings
+Thumbs.db
+*.swp
+*.swo
+
+# Node modules (if any)
+node_modules/
+
+# Publish output
+Publish/
+App.Publish/
+
+# Test Results
+TestResult.xml
+TestResults/
+
+# Generated files
+*.generated.cs
+*.generated.resx
+
+# Visual Studio 临时 SQL 查询文件
+SQLQuery*.sql
+SqlQuery*.sql

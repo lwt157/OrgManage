@@ -1,0 +1,4 @@
+﻿OrgID,OrgName,CategoryID,Description,LogoUrl,FoundedDate,MaxMembers,ContactInfo,AdvisorID,LeaderID,Status,ApproveTime,ApproverID,ApproveNote,CreateTime,AuditorRole,College
+25,院级doro,2,服务于校级doro,/Uploads/OrgLogos/1518061d-f00a-458b-a205-b5187c5f3383.png,,50,2252528819,,11,1,2026-05-14 22:55:17,13,系统管理员启用,2026-05-12 10:42:25,3,
+26,校级doro,1,最高位者，权限顶级,/Uploads/OrgLogos/3660a586-35c9-4d18-9300-f35378461ce4.jpg,,50,210524479,,11,1,2026-05-12 10:44:18,12,校级管理员审核,2026-05-12 10:43:22,4,
+27,测试,2,1,,,50,111,,11,1,2026-05-12 22:05:04,10,院级管理员审核,2026-05-12 21:43:39,3,商学院

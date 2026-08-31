@@ -1,0 +1,4 @@
+﻿ActivityID,OrgID,Title,Description,Location,StartTime,EndTime,MaxEnroll,CoverUrl,VenueID,Status,ApproveBy,ApproveTime,ApproveNote,CreateBy,CreateTime,ParticipationScope
+15,26,校级doro团队发布新活动啦！,玩捉迷藏游戏，所有学生可以参加,学校操场,2026-05-12 10:50:00,2026-05-14 10:51:00,30,,,1,13,2026-05-12 11:00:20,审批通过,11,2026-05-12 10:51:52,0
+16,27,校级doro团队发布新活动啦！,1,学校操场,2026-05-12 22:06:00,2026-05-15 22:06:00,0,,,1,,,,11,2026-05-12 22:06:51,1
+17,27,测试2,1,尚德楼,2026-05-12 22:19:00,2026-05-15 22:20:00,23,,,1,,,,11,2026-05-12 22:20:06,2
