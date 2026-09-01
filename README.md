@@ -158,7 +158,7 @@ Users ──┬── OrgMembers ── Organizations ── OrgCategories
 > - `Role = 2`：组织管理员
 > - `Role = 3`：院级管理员
 > - `Role = 4`：校级管理员
-> - `Role = 5`：系统管理员（最高权限，可管理所有模块）
+> - `Role = 5`：系统管理员（最高权限）
 
 ## 🎨 项目亮点
 
